@@ -113,7 +113,7 @@ func Validate(
 			return engineResponse, nil
 		}
 		logger.V(3).Info("validate resource %s against policy %s", resPath, policy.GetName())
-		return validateResource(policy, nil, resource, *namespace, a)
+		return validateResource(policy, nil, resource, namespace, a)
 	}
 
 	if client != nil {
@@ -159,7 +159,7 @@ func Validate(
 			}
 
 			logger.V(3).Info("validate resource %s against policy %s with binding %s", resPath, policy.GetName(), binding.GetName())
-			return validateResource(policy, &bindings[i], resource, *namespace, a)
+			return validateResource(policy, &bindings[i], resource, namespace, a)
 		}
 	} else {
 		for i, binding := range bindings {
